@@ -25,7 +25,7 @@ std::string ConsolePrint::DisplayText(string text) {
 //Give us what this program is and how to use it
 void ConsolePrint::GiveTutorial() {
 
-	BREAK; //Create a line
+	BREAK; //Create a line desu
 
 	BREAK; //Create a line
 
