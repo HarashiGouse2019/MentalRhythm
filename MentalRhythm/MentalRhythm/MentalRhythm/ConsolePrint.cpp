@@ -24,12 +24,15 @@ std::string ConsolePrint::DisplayText(string text) {
 
 //Give us what this program is and how to use it
 void ConsolePrint::GiveTutorial() {
+	std::cout << "Welcome to Mental Rhythm!!!" << "\n";
+	std::cout << "You are going to be given a tone at a certain frequency." << "\n";
+	std::cout << "As you match a frequency, you'll be given a long chain of frequencies." << "\n";
+	std::cout << "Match as many frequencies as you can until you've completed a chain." << "\n";
 
-	BREAK; //Create a line desu
+	BREAK;
 
-	BREAK; //Create a line
+	std::cout << "CONTROLS: \n LEFT - C Note \n UP - D Note \n RIGHT - E Note \n DOWN - F Note \n SPACE - G Note \n";
 
-	BREAK; //Create a line
+	BREAK;
 
-	BREAK; //Create a line
 }

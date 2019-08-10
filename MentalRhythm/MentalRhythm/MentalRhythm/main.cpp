@@ -21,15 +21,30 @@ We'll utilize the boost library for this project*/
 
 //Include custom headers
 #include "Sim.h"
+#include "ConsolePrint.h"
 
 //Include Booost Library Headers
 #include <boost/filesystem.hpp>
 
-int main() {
-	/*Our first task: We'll create input:
-	*	The spacebar will produce a frequency. This will be
-	*/
+ConsolePrint print;
 
-	Sim& instance = Sim::getInstance();
-	instance.Start();
+int main() {
+
+	/*Notes to leave whenever I come back from work::
+
+		First of all, make sure you turn in your multithread work before anything else.
+
+		After that, prioritize the final project for C++ (because I believe that will be a lot more easier than Unity since you're strictly doing coding)
+
+			First, we need a menu!
+			Implement a design pattern(singleton will be the easiest)
+			Include exception handling of some sort
+
+			These are just the really notiable stuff that we need*/
+
+	print.GiveTutorial();
+
+	Sim * simulation = new Sim();
+
+	simulation->Start();
 }
