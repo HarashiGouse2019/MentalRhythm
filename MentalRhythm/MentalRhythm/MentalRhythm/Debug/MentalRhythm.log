@@ -1,1 +1,15 @@
-﻿  MentalRhythm.vcxproj -> C:\Users\Tokusunei\Documents\GitHub\MentalRhythm\MentalRhythm\MentalRhythm\Debug\MentalRhythm.exe
+﻿  Sim.cpp
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(58): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(62): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(66): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(70): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(74): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(95): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(110): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(125): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(140): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(155): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+main.obj : error LNK2001: unresolved external symbol "private: static class Sim * Sim::instance" (?instance@Sim@@0PAV1@A)
+main.obj : error LNK2001: unresolved external symbol "private: static struct std::once_flag Sim::initInstanceFlag" (?initInstanceFlag@Sim@@0Uonce_flag@std@@A)
+Sim.obj : error LNK2001: unresolved external symbol "private: static class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > Sim::noteStreak" (?noteStreak@Sim@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A)
+C:\Users\Tokusunei\Desktop\MentalRhythm\MentalRhythm\MentalRhythm\Debug\MentalRhythm.exe : fatal error LNK1120: 3 unresolved externals

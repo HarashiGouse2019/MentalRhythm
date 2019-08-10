@@ -29,6 +29,7 @@ int main() {
 	/*Our first task: We'll create input:
 	*	The spacebar will produce a frequency. This will be
 	*/
-	Sim * simulation = new Sim();
-	simulation->Start();
+
+	Sim& instance = Sim::getInstance();
+	instance.Start();
 }
