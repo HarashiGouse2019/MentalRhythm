@@ -26,6 +26,8 @@ We'll utilize the boost library for this project*/
 //Include Booost Library Headers
 #include <boost/filesystem.hpp>
 
+using namespace std;
+
 ConsolePrint print;
 
 int main() {
@@ -44,7 +46,6 @@ int main() {
 
 	print.GiveTutorial();
 
-	Sim * simulation = new Sim();
-
+	Sim * simulation = Sim::Get();
 	simulation->Start();
 }

@@ -3,9 +3,14 @@
 #include <windows.h>
 #include <cstdlib>
 #include <conio.h>
+#include <thread>
+#include <atomic>
+#include <mutex>
 
 #include "Sim.h"
 #include "ConsolePrint.h"
+
+using namespace std;
 
 //Preprocessor Tokens
 #define SLEEP SleepEx(100, false)
@@ -32,7 +37,18 @@
 
 #define G5 Beep(783.9909, 100)
 
-Sim::Sim(void) {};
+std::atomic<Sim*> Sim::pinstance{ nullptr };
+std::mutex Sim::m_;
+
+Sim* Sim::Get() {
+	if (pinstance == nullptr) {
+		lock_guard<mutex> lock(m_);
+		if (pinstance == nullptr) {
+			pinstance = new Sim();
+		}
+	}
+	return pinstance;
+}
 
 void Sim::Start() {
 

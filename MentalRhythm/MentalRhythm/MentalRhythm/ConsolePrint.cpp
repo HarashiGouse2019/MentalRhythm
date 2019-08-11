@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 //Create some preprocessors
 #define BREAK cout << "-----------------------------------------------------------------------------------------------------------" << endl;
 
