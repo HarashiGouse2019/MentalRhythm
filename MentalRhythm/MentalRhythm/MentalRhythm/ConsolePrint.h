@@ -9,9 +9,14 @@ class ConsolePrint //Creating our class called ConsolePrint
 public:
 	ConsolePrint(); //Our constructor
 	string DisplayText(string text); //Our display text function
-	void GiveTutorial(); //A function to give us an tutorial
 private:
 	string name;
+};
+
+class HelpPrint : public ConsolePrint {
+public:
+	HelpPrint();
+	void GiveTutorial(); //A function to give us an tutorial
 };
 
 

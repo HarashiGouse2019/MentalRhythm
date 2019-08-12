@@ -24,8 +24,11 @@ std::string ConsolePrint::DisplayText(string text) {
 
 }
 
+//HelpPrint Constructor
+HelpPrint::HelpPrint(void) {};
+
 //Give us what this program is and how to use it
-void ConsolePrint::GiveTutorial() {
+void HelpPrint::GiveTutorial() {
 	std::cout << "Welcome to Mental Rhythm!!!" << "\n";
 	std::cout << "You are going to be given a tone at a certain frequency." << "\n";
 	std::cout << "As you match a frequency, you'll be given a long chain of frequencies." << "\n";

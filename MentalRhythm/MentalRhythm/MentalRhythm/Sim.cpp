@@ -41,6 +41,7 @@ std::atomic<Sim*> Sim::pinstance{ nullptr };
 std::mutex Sim::m_;
 
 Sim* Sim::Get() {
+	//Singleton
 	if (pinstance == nullptr) {
 		lock_guard<mutex> lock(m_);
 		if (pinstance == nullptr) {
@@ -58,7 +59,7 @@ void Sim::Start() {
 
 	int currentNoteChain = 0;
 
-	ConsolePrint con;
+	ConsolePrint * con;
 
 	std::string pattern = "041424344443424140<";
 	std::string streak = "";
@@ -111,7 +112,7 @@ void Sim::Start() {
 				case KEY_UP:
 					D5;
 					noteStreak += '2';
-					con.DisplayText(noteStreak);
+					con->DisplayText(noteStreak);
 					if (noteStreak.size() == streak.size()) {
 						if (MatchingStreak(noteStreak, streak)) {
 							noteStreak = "";
@@ -126,7 +127,7 @@ void Sim::Start() {
 				case KEY_DOWN:
 					E5;
 					noteStreak += '3';
-					con.DisplayText(noteStreak);
+					con->DisplayText(noteStreak);
 					if (noteStreak.size() == streak.size()) {
 						if (MatchingStreak(noteStreak, streak)) {
 							noteStreak = "";
@@ -141,7 +142,7 @@ void Sim::Start() {
 				case KEY_LEFT:
 					C5;
 					noteStreak += '1';
-					con.DisplayText(noteStreak);
+					con->DisplayText(noteStreak);
 					if (noteStreak.size() == streak.size()) {
 						if (MatchingStreak(noteStreak, streak)) {
 							noteStreak = "";
@@ -156,7 +157,7 @@ void Sim::Start() {
 				case KEY_RIGHT:
 					F5;
 					noteStreak += '4';
-					con.DisplayText(noteStreak);
+					con->DisplayText(noteStreak);
 					if (noteStreak.size() == streak.size()) {
 						if (MatchingStreak(noteStreak, streak)) {
 							noteStreak = "";
@@ -171,7 +172,7 @@ void Sim::Start() {
 				case SPACE:
 					G5;
 					noteStreak += '0';
-					con.DisplayText(noteStreak);
+					con->DisplayText(noteStreak);
 					if (noteStreak.size() == streak.size()) {
 						if (MatchingStreak(noteStreak, streak)) {
 							noteStreak = "";
@@ -202,12 +203,13 @@ void Sim::Start() {
 }
 
 bool Sim::MatchingStreak(std::string a, std::string b) {
+	ConsolePrint * con;
 	if (a == b) {
-		std::cout << "good";
+		con->DisplayText("Good");
 		return true;
 	}
 	else {
-		std::cout << "Nope";
+		con->DisplayText("Nope");
 		return false;
 	}
 	return false;

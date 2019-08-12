@@ -28,7 +28,7 @@ We'll utilize the boost library for this project*/
 
 using namespace std;
 
-ConsolePrint print;
+HelpPrint * printInfo;
 
 int main() {
 
@@ -44,7 +44,7 @@ int main() {
 
 			These are just the really notiable stuff that we need*/
 
-	print.GiveTutorial();
+	printInfo->GiveTutorial();
 
 	Sim * simulation = Sim::Get();
 	simulation->Start();
