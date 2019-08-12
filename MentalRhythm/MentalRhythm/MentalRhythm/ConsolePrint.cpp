@@ -41,3 +41,20 @@ void HelpPrint::GiveTutorial() {
 	BREAK;
 
 }
+
+//Menu Constructor
+Menu::Menu(void) {};
+
+//Pop the menu open
+void Menu::ShowMenu() {
+	std::cout << "Please select an option" << "\n";
+
+	BREAK;
+
+	std::cout << "1 - Play Random Note Streak" << "\n";
+	std::cout << "2 - Select Note Streak" << "\n";
+	std::cout << "3 - Create Note Streak" << "\n";
+	std::cout << "99 - End Program" << "\n";
+
+	BREAK;
+}

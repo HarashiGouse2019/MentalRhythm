@@ -6,6 +6,7 @@
 #include <thread>
 #include <atomic>
 #include <mutex>
+#include <exception>
 
 #include "Sim.h"
 #include "ConsolePrint.h"
@@ -40,6 +41,13 @@ using namespace std;
 std::atomic<Sim*> Sim::pinstance{ nullptr };
 std::mutex Sim::m_;
 
+//Exception here
+struct InputException : public exception{
+	const char * what() const throw() {
+		return "Incorrect Input!";
+	}
+};
+
 Sim* Sim::Get() {
 	//Singleton
 	if (pinstance == nullptr) {
@@ -59,7 +67,7 @@ void Sim::Start() {
 
 	int currentNoteChain = 0;
 
-	ConsolePrint * con;
+	ConsolePrint * con = new ConsolePrint();
 
 	std::string pattern = "041424344443424140<";
 	std::string streak = "";
@@ -108,85 +116,93 @@ void Sim::Start() {
 		case true:
 			int c = 0; //Initialize c to toggle from 0 to 1 when we send input
 			while (1) {
-				switch ((c = _getch())) {
-				case KEY_UP:
-					D5;
-					noteStreak += '2';
-					con->DisplayText(noteStreak);
-					if (noteStreak.size() == streak.size()) {
-						if (MatchingStreak(noteStreak, streak)) {
-							noteStreak = "";
-							usersTurn = false;
-							currentNoteChain++;
-							streak += pattern[currentNoteChain];
+				try {
+					switch ((c = _getch())) {
+					case KEY_UP:
+						D5;
+						noteStreak += '2';
+						con->DisplayText(noteStreak);
+						if (noteStreak.size() == streak.size()) {
+							if (MatchingStreak(noteStreak, streak)) {
+								noteStreak = "";
+								usersTurn = false;
+								currentNoteChain++;
+								streak += pattern[currentNoteChain];
+							}
+							else gameOn = false;
 						}
-						else gameOn = false;
-					}
 
-					break;
-				case KEY_DOWN:
-					E5;
-					noteStreak += '3';
-					con->DisplayText(noteStreak);
-					if (noteStreak.size() == streak.size()) {
-						if (MatchingStreak(noteStreak, streak)) {
-							noteStreak = "";
-							usersTurn = false;
-							currentNoteChain++;
-							streak += pattern[currentNoteChain];
+						break;
+					case KEY_DOWN:
+						E5;
+						noteStreak += '3';
+						con->DisplayText(noteStreak);
+						if (noteStreak.size() == streak.size()) {
+							if (MatchingStreak(noteStreak, streak)) {
+								noteStreak = "";
+								usersTurn = false;
+								currentNoteChain++;
+								streak += pattern[currentNoteChain];
+							}
+							else gameOn = false;
 						}
-						else gameOn = false;
-					}
 
-					break;
-				case KEY_LEFT:
-					C5;
-					noteStreak += '1';
-					con->DisplayText(noteStreak);
-					if (noteStreak.size() == streak.size()) {
-						if (MatchingStreak(noteStreak, streak)) {
-							noteStreak = "";
-							usersTurn = false;
-							currentNoteChain++;
-							streak += pattern[currentNoteChain];
+						break;
+					case KEY_LEFT:
+						C5;
+						noteStreak += '1';
+						con->DisplayText(noteStreak);
+						if (noteStreak.size() == streak.size()) {
+							if (MatchingStreak(noteStreak, streak)) {
+								noteStreak = "";
+								usersTurn = false;
+								currentNoteChain++;
+								streak += pattern[currentNoteChain];
+							}
+							else gameOn = false;
 						}
-						else gameOn = false;
-					}
 
-					break;
-				case KEY_RIGHT:
-					F5;
-					noteStreak += '4';
-					con->DisplayText(noteStreak);
-					if (noteStreak.size() == streak.size()) {
-						if (MatchingStreak(noteStreak, streak)) {
-							noteStreak = "";
-							usersTurn = false;
-							currentNoteChain++;
-							streak += pattern[currentNoteChain];
+						break;
+					case KEY_RIGHT:
+						F5;
+						noteStreak += '4';
+						con->DisplayText(noteStreak);
+						if (noteStreak.size() == streak.size()) {
+							if (MatchingStreak(noteStreak, streak)) {
+								noteStreak = "";
+								usersTurn = false;
+								currentNoteChain++;
+								streak += pattern[currentNoteChain];
+							}
+							else gameOn = false;
 						}
-						else gameOn = false;
-					}
 
-					break;
-				case SPACE:
-					G5;
-					noteStreak += '0';
-					con->DisplayText(noteStreak);
-					if (noteStreak.size() == streak.size()) {
-						if (MatchingStreak(noteStreak, streak)) {
-							noteStreak = "";
-							usersTurn = false;
-							currentNoteChain++;
-							streak += pattern[currentNoteChain];
+						break;
+					case SPACE:
+						G5;
+						noteStreak += '0';
+						con->DisplayText(noteStreak);
+						if (noteStreak.size() == streak.size()) {
+							if (MatchingStreak(noteStreak, streak)) {
+								noteStreak = "";
+								usersTurn = false;
+								currentNoteChain++;
+								streak += pattern[currentNoteChain];
+							}
+							else gameOn = false;
 						}
-						else gameOn = false;
-					}
 
-					break;
-				default:
-					
-					break;
+						break;
+					default:
+						throw InputException();
+						break;
+					}
+				}
+				catch (InputException& ie) {
+					std::cerr << ie.what();
+				}
+				catch (std::exception& e) {
+					std::cerr << "System Defined Exception: \"" << e.what() << "\"";
 				}
 				break;
 			}
@@ -203,7 +219,7 @@ void Sim::Start() {
 }
 
 bool Sim::MatchingStreak(std::string a, std::string b) {
-	ConsolePrint * con;
+	ConsolePrint * con = new ConsolePrint();
 	if (a == b) {
 		con->DisplayText("Good");
 		return true;

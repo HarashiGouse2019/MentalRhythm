@@ -1,15 +1,12 @@
-﻿  ConsolePrint.cpp
-  Sim.cpp
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(75): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(79): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(83): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(87): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(91): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(112): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(127): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(142): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(157): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(172): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
-  main.cpp
-  Generating Code...
+﻿  Sim.cpp
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(84): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(88): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(92): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(96): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(100): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(122): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(137): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(152): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(167): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\sim.cpp(182): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
   MentalRhythm.vcxproj -> C:\Users\Tokusunei\Desktop\MentalRhythm\MentalRhythm\MentalRhythm\Debug\MentalRhythm.exe

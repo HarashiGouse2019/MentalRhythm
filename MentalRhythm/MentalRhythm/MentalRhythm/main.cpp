@@ -39,7 +39,7 @@ int main() {
 		After that, prioritize the final project for C++ (because I believe that will be a lot more easier than Unity since you're strictly doing coding)
 
 			First, we need a menu!
-			Implement a design pattern(singleton will be the easiest)
+			Implement a design pattern(singleton will be the easiest) - Complete!!!
 			Include exception handling of some sort
 
 			These are just the really notiable stuff that we need*/

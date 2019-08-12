@@ -19,4 +19,10 @@ public:
 	void GiveTutorial(); //A function to give us an tutorial
 };
 
+class Menu : public ConsolePrint {
+public:
+	Menu();
+	void ShowMenu();
+};
+
 
