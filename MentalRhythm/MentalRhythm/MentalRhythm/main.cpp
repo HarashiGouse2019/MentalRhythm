@@ -47,10 +47,6 @@ int main() {
 			Include exception handling of some sort
 
 			These are just the really notiable stuff that we need*/
-	for (int i = 0; i < 10; i++) {
-		Random * random = new Random();
-		std::cout << random->GetNumberRange(5, 7);
-	}
 
 	inputVal = menu->ShowMenu();
 	do {

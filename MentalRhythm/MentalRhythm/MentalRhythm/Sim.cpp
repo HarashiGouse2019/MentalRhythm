@@ -243,13 +243,13 @@ string Sim::Generate() {
 	string generatedString = "";
 
 	//Generate a number between 10 and 20
-	Random * random = new Random();
-	int val1 = random->GetNumberRange(10, 20);
+	Random noteLength;
+	int val1 = noteLength.GetNumberRange(10, 20);
 
 	//Do a for loop, and generate a number between 0 and 4
 	for (int i = 0; i < val1; i++) {
-		Random * random = new Random();
-		int val2 = random->GetNumberRange(0, 15);
+		Random notes;
+		int val2 = notes.GetNumberRange(0, 4);
 
 		generatedString += std::to_string(val2);
 	}
@@ -258,3 +258,5 @@ string Sim::Generate() {
 
 	return generatedString; //Return the generated string
 }
+
+Sim::~Sim() { std::cout << "End of Simulation"; }
