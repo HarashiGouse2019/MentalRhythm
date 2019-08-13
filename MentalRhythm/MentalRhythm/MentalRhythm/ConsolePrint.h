@@ -1,4 +1,7 @@
 #pragma once
+
+
+
 #include <iostream> //Include iostream
 #include <string> //Include string
 
@@ -22,6 +25,7 @@ public:
 class Menu : public ConsolePrint {
 public:
 	Menu();
+	~Menu();
 	int ShowMenu();
 };
 

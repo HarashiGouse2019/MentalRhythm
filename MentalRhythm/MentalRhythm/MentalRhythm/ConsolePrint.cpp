@@ -63,3 +63,6 @@ int Menu::ShowMenu() {
 	std::cin >> inputVal;
 	return inputVal;
 }
+Menu::~Menu() {
+	system("CLS");
+}

@@ -18,54 +18,42 @@ We'll utilize the boost library for this project*/
 #include <windows.h>
 #include <vector>
 #include <algorithm>
-#include "MyRandom.h"
 
 //Include custom headers
 #include "Sim.h"
 #include "ConsolePrint.h"
-
-//Include Booost Library Headers
-#include <boost/filesystem.hpp>
+#include "MyRandom.h"
+#include "FileManager.h"
 
 using namespace std;
 
 int inputVal = NULL;
 
-Menu * menu;
-HelpPrint * printInfo;
+Menu * menu = new Menu();
+HelpPrint * printInfo = new HelpPrint();
 
 int main() {
-
-	/*Notes to leave whenever I come back from work::
-
-		First of all, make sure you turn in your multithread work before anything else.
-
-		After that, prioritize the final project for C++ (because I believe that will be a lot more easier than Unity since you're strictly doing coding)
-
-			First, we need a menu!
-			Implement a design pattern(singleton will be the easiest) - Complete!!!
-			Include exception handling of some sort
-
-			These are just the really notiable stuff that we need*/
-
-	
 	do {
 		inputVal = menu->ShowMenu();
 		switch (inputVal) {
 		case 1:
+		{
 			delete menu;
 			printInfo->GiveTutorial();
 
 			Sim * simulation = Sim::Get();
 			simulation->inputVal = inputVal;
 			simulation->Start();
+		}
 			break;
-		//case 2:
-		//	break;
-		//case 3:
-		//	break;
-		//case 99:
-		//	break;
+		case 2:
+		{
+			delete menu;
+			FileManager * fileManager = FileManager::Get();
+			fileManager->Read();
+
+			break;
+		}
 		}
 	} while (inputVal != 99);
 }
