@@ -1,4 +1,7 @@
 #include <boost/foreach.hpp>
+#include <boost/random/mersenne_twister.hpp>
+#include <boost/random/uniform_int_distribution.hpp>
+
 
 #include <windows.h>
 #include <cstdlib>
@@ -10,6 +13,7 @@
 
 #include "Sim.h"
 #include "ConsolePrint.h"
+#include "MyRandom.h"
 
 using namespace std;
 
@@ -69,10 +73,14 @@ void Sim::Start() {
 
 	ConsolePrint * con = new ConsolePrint();
 
-	std::string pattern = "041424344443424140<";
+	std::string pattern = "";
 	std::string streak = "";
 
 	streak = pattern[currentNoteChain];
+
+	if (inputVal == 1) pattern = Generate();
+
+	std::cout << pattern;
 
 	do {
 		switch(usersTurn) {
@@ -229,4 +237,24 @@ bool Sim::MatchingStreak(std::string a, std::string b) {
 		return false;
 	}
 	return false;
+}
+
+string Sim::Generate() {
+	string generatedString = "";
+
+	//Generate a number between 10 and 20
+	Random * random = new Random();
+	int val1 = random->GetNumberRange(10, 20);
+
+	//Do a for loop, and generate a number between 0 and 4
+	for (int i = 0; i < val1; i++) {
+		Random * random = new Random();
+		int val2 = random->GetNumberRange(0, 15);
+
+		generatedString += std::to_string(val2);
+	}
+
+	generatedString += '<';
+
+	return generatedString; //Return the generated string
 }

@@ -121,10 +121,12 @@
   <ItemGroup>
     <ClCompile Include="ConsolePrint.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyRandom.cpp" />
     <ClCompile Include="Sim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsolePrint.h" />
+    <ClInclude Include="MyRandom.h" />
     <ClInclude Include="Sim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

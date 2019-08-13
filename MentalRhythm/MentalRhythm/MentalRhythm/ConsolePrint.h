@@ -22,7 +22,7 @@ public:
 class Menu : public ConsolePrint {
 public:
 	Menu();
-	void ShowMenu();
+	int ShowMenu();
 };
 
 

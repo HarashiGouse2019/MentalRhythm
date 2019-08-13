@@ -12,7 +12,10 @@ class Sim {
 public:
 	void Start();
 	bool MatchingStreak(std::string a, std::string b);
+	string Generate(); //Generate between a 10 to 20 character string with numbers 0, 1, 2, 3, and 4
 	static Sim* Get(); //Singleton
+
+	int inputVal;
 
 private:
 	//Singleton

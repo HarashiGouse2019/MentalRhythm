@@ -46,7 +46,7 @@ void HelpPrint::GiveTutorial() {
 Menu::Menu(void) {};
 
 //Pop the menu open
-void Menu::ShowMenu() {
+int Menu::ShowMenu() {
 	std::cout << "Please select an option" << "\n";
 
 	BREAK;
@@ -57,4 +57,9 @@ void Menu::ShowMenu() {
 	std::cout << "99 - End Program" << "\n";
 
 	BREAK;
+
+	//Menu Functionality
+	int inputVal;
+	std::cin >> inputVal;
+	return inputVal;
 }

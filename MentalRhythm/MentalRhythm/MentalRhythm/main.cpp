@@ -18,6 +18,7 @@ We'll utilize the boost library for this project*/
 #include <windows.h>
 #include <vector>
 #include <algorithm>
+#include "MyRandom.h"
 
 //Include custom headers
 #include "Sim.h"
@@ -28,6 +29,9 @@ We'll utilize the boost library for this project*/
 
 using namespace std;
 
+int inputVal = NULL;
+
+Menu * menu;
 HelpPrint * printInfo;
 
 int main() {
@@ -43,9 +47,29 @@ int main() {
 			Include exception handling of some sort
 
 			These are just the really notiable stuff that we need*/
+	for (int i = 0; i < 10; i++) {
+		Random * random = new Random();
+		std::cout << random->GetNumberRange(5, 7);
+	}
 
-	printInfo->GiveTutorial();
+	inputVal = menu->ShowMenu();
+	do {
+		switch (inputVal) {
+		case 1:
+			printInfo->GiveTutorial();
 
-	Sim * simulation = Sim::Get();
-	simulation->Start();
+			Sim * simulation = Sim::Get();
+			simulation->inputVal = inputVal;
+			simulation->Start();
+			break;
+		//case 2:
+		//	break;
+		//case 3:
+		//	break;
+		//case 99:
+		//	break;
+		}
+	} while (inputVal != 99);
+
+	
 }
