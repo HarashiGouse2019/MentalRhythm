@@ -48,10 +48,12 @@ int main() {
 
 			These are just the really notiable stuff that we need*/
 
-	inputVal = menu->ShowMenu();
+	
 	do {
+		inputVal = menu->ShowMenu();
 		switch (inputVal) {
 		case 1:
+			delete menu;
 			printInfo->GiveTutorial();
 
 			Sim * simulation = Sim::Get();
@@ -66,6 +68,4 @@ int main() {
 		//	break;
 		}
 	} while (inputVal != 99);
-
-	
 }

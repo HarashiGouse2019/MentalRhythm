@@ -76,9 +76,9 @@ void Sim::Start() {
 	std::string pattern = "";
 	std::string streak = "";
 
-	streak = pattern[currentNoteChain];
-
 	if (inputVal == 1) pattern = Generate();
+
+	streak = pattern[currentNoteChain];
 
 	std::cout << pattern;
 
@@ -224,7 +224,8 @@ void Sim::Start() {
 	else {
 		std::cout << "\nTry again:\nYour score: " << (currentNoteChain) << "\n"; WAIT;
 	}
-}
+	delete this;
+ }
 
 bool Sim::MatchingStreak(std::string a, std::string b) {
 	ConsolePrint * con = new ConsolePrint();
@@ -259,4 +260,4 @@ string Sim::Generate() {
 	return generatedString; //Return the generated string
 }
 
-Sim::~Sim() { std::cout << "End of Simulation"; }
+Sim::~Sim() { system("CLS"); std::cout << "End of Simulation. "; pinstance = NULL; }
