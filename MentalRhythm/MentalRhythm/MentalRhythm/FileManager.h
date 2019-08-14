@@ -9,6 +9,9 @@
 #include <atomic>
 #include <future>
 #include <mutex>
+#include <vector>
+#include <algorithm>
+
 
 #include "ConsolePrint.h"
 
@@ -17,26 +20,24 @@ using namespace boost::filesystem;
 
 class FileManager {
 public:
-	void Read(); //Read from a file
-	void Write(); //Write to a file
+	int Read(); //Read from a file
+	void Write(string filename, string content); //Write to a file
+
+	static string Execute(string filename); //Execute a file
 
 	//The FileManager will just do those two basic functionalities
 
 	static FileManager* Get(); //Singleton
+	static FileManager* Delete();
+
+	vector<std::string> fileNames;
 
 private:
-	FileManager() { std::cout << "Running FileManager..." << std::endl; init(); }
+	FileManager() { std::cout << "\nRunning FileManager...\n" << std::endl; init(); }
 	void init() {
-		std::cout << "FileManager  Ready!!!" << std::endl;
+		std::cout << "\nFileManager Ready!!!\n" << std::endl;
 	}
 	static atomic<FileManager*> pinstance;
 	static mutex m_;
-
 };
-
-class FileMenu : public FileManager, public Menu {
-public:
-	int ShowMenu();
-};
-
 #endif

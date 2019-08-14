@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef SIM_H
+#define SIM_H
+
 #include <iostream>
 #include <string>
 #include <future>
@@ -15,8 +18,10 @@ public:
 	bool MatchingStreak(std::string a, std::string b);
 	string Generate(); //Generate between a 10 to 20 character string with numbers 0, 1, 2, 3, and 4
 	static Sim* Get(); //Singleton
+	static Sim* Delete();
 
 	int inputVal;
+	std::string patternReceiver;
 
 private:
 	//Singleton
@@ -30,3 +35,5 @@ private:
 	//The amount of notes you have to play
 	std::string noteStreak;
 };
+
+#endif

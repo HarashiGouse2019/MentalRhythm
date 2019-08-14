@@ -24,33 +24,70 @@ We'll utilize the boost library for this project*/
 #include "ConsolePrint.h"
 #include "MyRandom.h"
 #include "FileManager.h"
+#include "NoteStreakFileCreation.h"
 
 using namespace std;
 
 int inputVal = NULL;
+int& globalRef = inputVal;
 
-Menu * menu = new Menu();
+
 HelpPrint * printInfo = new HelpPrint();
+string fileString; //This is from reading a file
 
 int main() {
 	do {
+		Menu * menu = new Menu();
 		inputVal = menu->ShowMenu();
 		switch (inputVal) {
 		case 1:
 		{
 			delete menu;
-			printInfo->GiveTutorial();
+			std::cout << "OK" << std::endl;
+
+			printInfo->SimHelp();
 
 			Sim * simulation = Sim::Get();
 			simulation->inputVal = inputVal;
 			simulation->Start();
-		}
+			simulation->Delete();
+
 			break;
+		}
 		case 2:
 		{
 			delete menu;
+
+			int inputVal;
+
 			FileManager * fileManager = FileManager::Get();
-			fileManager->Read();
+			FileMenu * menu = new FileMenu();
+
+			int numFiles = fileManager->Read();
+
+			if (numFiles > 0) inputVal = menu->ShowMenu();
+
+			//Loop through
+			for (int i = 0; i < fileManager->fileNames.size(); i++) {
+				if (i == inputVal) {
+					Sim * simulation = Sim::Get();
+					simulation->inputVal = globalRef;
+					simulation->patternReceiver = fileManager->Execute(fileManager->fileNames[i]);
+					simulation->Start();
+					simulation->Delete();
+				}
+			}
+			fileManager->Delete();
+			break;
+		}
+		case 3:
+		{
+			delete menu;
+			
+			NoteStreakFileCreation * nfsc = NoteStreakFileCreation::Get();
+
+			nfsc->Record();
+			nfsc->Delete();
 
 			break;
 		}

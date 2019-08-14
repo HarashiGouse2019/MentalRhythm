@@ -1,9 +1,12 @@
+#include <boost/spirit/include/support_istream_iterator.hpp>
 #include <iostream>
 
 #include <mutex>
 #include <atomic>
 #include "FileManager.h"
 #include "ConsolePrint.h"
+#include "Sim.h"
+#include "NoteStreakFileCreation.h"
 
 using namespace std;
 
@@ -11,6 +14,7 @@ using namespace std;
 #define BREAK cout << "-----------------------------------------------------------------------------------------------------------" << endl;
 
 ConsolePrint con;
+HelpPrint helpPrint;
 
 std::atomic<FileManager*> FileManager::pinstance{ nullptr };
 std::mutex FileManager::m_;
@@ -25,7 +29,13 @@ FileManager * FileManager::Get() {
 	return pinstance;
 }
 
-void FileManager::Read() {
+FileManager * FileManager::Delete() {
+	delete pinstance;
+	pinstance = NULL;
+	return pinstance;
+}
+
+int FileManager::Read() {
 	int index = 0;
 
 	con.DisplayText("Reading...\n");
@@ -36,25 +46,73 @@ void FileManager::Read() {
 
 	//cycle through the directory
 	for (boost::filesystem::directory_iterator itr(p); itr != end_itr; ++itr) {
-		if (boost::filesystem::is_regular_file(itr->path())) {
+		if (boost::filesystem::is_regular_file(itr->path()) && boost::filesystem::extension(itr->path()) == ".mrb") {
 			//Assign current file name to current_file and echo it out ot the console
-			std::string current_file = std::to_string(index) + itr->path().string();
+			fileNames.push_back(itr->path().string());
+			std::string current_file = std::to_string(index) + "-----" + itr->path().string();
 			std::cout << current_file << std::endl;
 			index++;
 		}
 	}
+
+	std::cout << "\n\n";
+
+	//If the program could not find any .mrb files
+	if (index < 1) {
+		con.DisplayText("There were no .mrb files. \nYou should create your own .mrb\n either manually or via Main Menu (option 3)\n");
+		system("pause"); system("CLS");
+		return NULL;
+	}
+	
+	return index;
 }
 
-//void FileManager::Write() {
-//	return NULL;
-//}
-int FileMenu::ShowMenu() {
-	std::cout << "Input a value to open a file. (Must be of extension .mrb)" << "/n";
+void FileManager::Write(string filename, string content) {
 
-	BREAK;
+	boost::filesystem::ofstream save;
 
-	//Menu Functionality
-	int inputVal;
-	std::cin >> inputVal;
-	return inputVal;
+	//Open our file. If it doesn't exist, create one!
+	save.open(filename + ".mrb", ios::out | ios::binary);
+
+	//Iterate and put each individual text into the file;
+	if (save) {
+		std::cout << "Saving... \n";
+		save << content;
+	}
+
+	//Close the file
+	save.close();
+};
+
+
+std::string FileManager::Execute(string filename) {
+	std::string content;
+	std::string line;
+
+	std::cout << "\nExecuting..." << filename << std::endl;
+
+	boost::filesystem::ifstream exec;
+
+	//We open the selected file
+	exec.open(filename, ios::in | ios::binary);
+
+	//We want to iterate through the content.
+	//We'll get getting a string for this, and we want to return
+	//it for the simulation
+	if (exec) {
+		std::cout << "\nReading... \n";
+		for (content; getline(exec, line);) {
+			content += line;
+		}
+	}
+	else {
+		std::cerr << "Couldn't Open " << filename << "\n";
+	}
+	
+	//And now that we got the information we need, we close the file.
+	exec.close();
+
+	std::cout << "\nDONE!\n" << std::endl;
+
+	return content;
 }

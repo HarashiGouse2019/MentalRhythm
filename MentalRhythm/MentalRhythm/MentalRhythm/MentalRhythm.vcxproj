@@ -123,12 +123,14 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyRandom.cpp" />
+    <ClCompile Include="NoteStreakFileCreation.cpp" />
     <ClCompile Include="Sim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsolePrint.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="MyRandom.h" />
+    <ClInclude Include="NoteStreakFileCreation.h" />
     <ClInclude Include="Sim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

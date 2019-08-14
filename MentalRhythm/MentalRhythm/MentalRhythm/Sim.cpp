@@ -32,15 +32,15 @@ using namespace std;
 
 #define SPACE 32
 
-#define C5 Beep(523.2511, 100)
+#define C5 Beep((DWORD)523.2511, (DWORD)100)
 
-#define D5 Beep(587.3295, 100)
+#define D5 Beep((DWORD)587.3295, (DWORD)100)
 
-#define E5 Beep(659.2551, 100)
+#define E5 Beep((DWORD)659.2551, (DWORD)100)
 
-#define F5 Beep(698.4565, 100)
+#define F5 Beep((DWORD)698.4565, (DWORD)100)
 
-#define G5 Beep(783.9909, 100)
+#define G5 Beep((DWORD)783.9909, (DWORD)100)
 
 std::atomic<Sim*> Sim::pinstance{ nullptr };
 std::mutex Sim::m_;
@@ -63,6 +63,12 @@ Sim* Sim::Get() {
 	return pinstance;
 }
 
+Sim * Sim::Delete() {
+	delete pinstance;
+	pinstance = nullptr;
+	return pinstance;
+}
+
 void Sim::Start() {
 
 	bool gameOn = true;
@@ -76,44 +82,24 @@ void Sim::Start() {
 	std::string pattern = "";
 	std::string streak = "";
 
-	if (inputVal == 1) pattern = Generate();
+	if (inputVal == 1) pattern = Generate(); //We'll have the Simulation generate a number if we haven't choose a noteStreak File
+	if (inputVal == 2) pattern = patternReceiver;
 
 	streak = pattern[currentNoteChain];
 
-	std::cout << pattern;
-
 	do {
-		switch(usersTurn) {
+		switch (usersTurn) {
 		case false:
 			if (streak.size() == pattern.size()) gameOn = false; else {
 				BOOST_FOREACH(char ch, streak) {
 					switch (ch) {
-					case '0':
-						G5;
-						SLEEP;
-						break;
-					case '1':
-						C5;
-						SLEEP;
-						break;
-					case '2':
-						D5;
-						SLEEP;
-						break;
-					case '3':
-						E5;
-						SLEEP;
-						break;
-					case '4':
-						F5;
-						SLEEP;
-						break;
-					case '<':
-						usersTurn = true;
-						break;
-					default:
-
-						break;
+					case '0': {G5; SLEEP; break; }
+					case '1': {C5; SLEEP; break; }
+					case '2': {D5; SLEEP; break; }
+					case '3': {E5; SLEEP; break; }
+					case '4': {F5; SLEEP; break; }
+					case '<': usersTurn = true; break;
+					default: break;
 					}
 					if (streak.size() == currentNoteChain + 1) {
 						usersTurn = true;
@@ -126,7 +112,8 @@ void Sim::Start() {
 			while (1) {
 				try {
 					switch ((c = _getch())) {
-					case KEY_UP:
+					case 72:
+					{
 						D5;
 						noteStreak += '2';
 						con->DisplayText(noteStreak);
@@ -141,7 +128,10 @@ void Sim::Start() {
 						}
 
 						break;
-					case KEY_DOWN:
+
+					}
+					case 80:
+					{
 						E5;
 						noteStreak += '3';
 						con->DisplayText(noteStreak);
@@ -156,7 +146,9 @@ void Sim::Start() {
 						}
 
 						break;
-					case KEY_LEFT:
+					}
+					case 75:
+					{
 						C5;
 						noteStreak += '1';
 						con->DisplayText(noteStreak);
@@ -171,7 +163,9 @@ void Sim::Start() {
 						}
 
 						break;
-					case KEY_RIGHT:
+					}
+					case 77:
+					{
 						F5;
 						noteStreak += '4';
 						con->DisplayText(noteStreak);
@@ -186,7 +180,9 @@ void Sim::Start() {
 						}
 
 						break;
-					case SPACE:
+					}
+					case 32:
+					{
 						G5;
 						noteStreak += '0';
 						con->DisplayText(noteStreak);
@@ -201,6 +197,7 @@ void Sim::Start() {
 						}
 
 						break;
+					}
 					default:
 						throw InputException();
 						break;
@@ -224,7 +221,9 @@ void Sim::Start() {
 	else {
 		std::cout << "\nTry again:\nYour score: " << (currentNoteChain) << "\n"; WAIT;
 	}
-	delete this;
+	streak = "";
+
+	delete pinstance;
  }
 
 bool Sim::MatchingStreak(std::string a, std::string b) {
@@ -260,4 +259,4 @@ string Sim::Generate() {
 	return generatedString; //Return the generated string
 }
 
-Sim::~Sim() { system("CLS"); std::cout << "End of Simulation. "; pinstance = NULL; }
+Sim::~Sim() {system("CLS"); std::cout << "End of Simulation. "; pinstance = NULL; }

@@ -1,17 +1,21 @@
 #pragma once
 
-
+#ifndef CONSOLE_PRINT_H
+#define CONSOLE_PRINT_H
 
 #include <iostream> //Include iostream
 #include <string> //Include string
 
 using namespace std; //Using the standard library
 
+
 class ConsolePrint //Creating our class called ConsolePrint
 {
 public:
+
 	ConsolePrint(); //Our constructor
-	string DisplayText(string text); //Our display text function
+	string DisplayText(string text, bool clear = true, bool include_eol = true); //Our display text function
+
 private:
 	string name;
 };
@@ -19,7 +23,8 @@ private:
 class HelpPrint : public ConsolePrint {
 public:
 	HelpPrint();
-	void GiveTutorial(); //A function to give us an tutorial
+	void SimHelp(); //A function to give us during the Simulation
+	void FileManagerHelp(); //A function to help with File Manager
 };
 
 class Menu : public ConsolePrint {
@@ -29,4 +34,11 @@ public:
 	int ShowMenu();
 };
 
+class FileMenu : public Menu {
+public:
+	FileMenu();
+	int ShowMenu();
+};
 
+
+#endif
