@@ -38,7 +38,7 @@ FileManager * FileManager::Delete() {
 int FileManager::Read() {
 	int index = 0;
 
-	con.DisplayText("Reading...\n");
+	con.DisplayText("Reading...\n\n", false, false);
 
 	boost::filesystem::path p(".");
 
@@ -49,13 +49,13 @@ int FileManager::Read() {
 		if (boost::filesystem::is_regular_file(itr->path()) && boost::filesystem::extension(itr->path()) == ".mrb") {
 			//Assign current file name to current_file and echo it out ot the console
 			fileNames.push_back(itr->path().string());
-			std::string current_file = std::to_string(index) + "-----" + itr->path().string();
+			std::string current_file = std::to_string(index) + " ----- " + itr->path().string();
 			std::cout << current_file << std::endl;
 			index++;
 		}
 	}
 
-	std::cout << "\n\n";
+	std::cout << "\nDONE!\n\n";
 
 	//If the program could not find any .mrb files
 	if (index < 1) {
@@ -83,6 +83,15 @@ void FileManager::Write(string filename, string content) {
 	//Close the file
 	save.close();
 };
+
+void FileManager::Trash(string filename) {
+	std::cout << "\nErasing...\n";
+
+	//Delete the file
+	boost::filesystem::remove(filename);
+
+	std::cout << "\nDONE!!!\n";
+}
 
 
 std::string FileManager::Execute(string filename) {

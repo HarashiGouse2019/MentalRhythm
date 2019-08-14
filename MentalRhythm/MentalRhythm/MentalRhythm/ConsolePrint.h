@@ -24,7 +24,7 @@ class HelpPrint : public ConsolePrint {
 public:
 	HelpPrint();
 	void SimHelp(); //A function to give us during the Simulation
-	void FileManagerHelp(); //A function to help with File Manager
+	void FileManagerHelp(int index = NULL); //A function to help with File Manager
 };
 
 class Menu : public ConsolePrint {
@@ -37,7 +37,7 @@ public:
 class FileMenu : public Menu {
 public:
 	FileMenu();
-	int ShowMenu();
+	std::string ShowMenu();
 };
 
 

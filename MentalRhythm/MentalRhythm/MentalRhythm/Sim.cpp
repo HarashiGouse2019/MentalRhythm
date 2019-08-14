@@ -108,6 +108,7 @@ void Sim::Start() {
 			}
 			break;
 		case true:
+			int keyVal = NULL;
 			int c = 0; //Initialize c to toggle from 0 to 1 when we send input
 			while (1) {
 				try {
@@ -199,7 +200,7 @@ void Sim::Start() {
 						break;
 					}
 					default:
-						throw InputException();
+						if (keyVal != NULL && keyVal != KEY_UP && keyVal != KEY_DOWN && keyVal != KEY_LEFT && keyVal != KEY_RIGHT) throw InputException();
 						break;
 					}
 				}

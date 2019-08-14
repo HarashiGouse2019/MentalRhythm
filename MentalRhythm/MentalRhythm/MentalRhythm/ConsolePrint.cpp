@@ -48,21 +48,43 @@ void HelpPrint::SimHelp() {
 
 }
 
-void HelpPrint::FileManagerHelp() {
-	std::cout << "Welcome to the NoteStreak File Creation!!!" << "\n";
-	std::cout << "You are able to create your own .mrb file using this menu.";
+void HelpPrint::FileManagerHelp(int index) {
+	switch (index) {
+	case 0:
+	{
+		std::cout << "Welcome to the NoteStreak File Creation!!!" << "\n";
+		std::cout << "You are able to create your own .mrb file using this menu.";
 
-	BREAK;
+		BREAK;
 
-	std::cout << "When using the NoteStreak File Creation, valid inputs include... \n";
-	std::cout << "LEFT - C Note (Prints 1) \n UP - D Note (Prints 2) \n DOWN - E Note (Prints 3) \n RIGHT - F Note (Prints 4) \n SPACE - G Note (Prints 0) \n";
+		std::cout << "When using the NoteStreak File Creation, valid inputs include... \n";
+		std::cout << "LEFT - C Note (Prints 1) \nUP - D Note (Prints 2) \nDOWN - E Note (Prints 3) \nRIGHT - F Note (Prints 4) \n SPACE - G Note (Prints 0) \n";
 
-	BREAK;
+		BREAK;
 
-	std::cout << "When finish recording your streak, insert a \"<\" to save it in the default directory.\n";
-	std::cout << "If you make a mistake, hit the backspace.\n";
+		std::cout << "When finish recording your streak, hit ENTER to save it in the default directory.\n";
+		std::cout << "Type in \"help\" to see avaliable commands.\n";
 
-	BREAK;
+		BREAK;
+		break;
+	}
+	case 1:
+	{
+		std::cout << "\n\nWhat you see below are valid commands:\n";
+
+		BREAK;
+
+		std::cout << "# - File Index\n\n";
+		std::cout << "execute #\n";
+		std::cout << "read #\n";
+		std::cout << "rename #\n";
+		std::cout << "delete #\n\n";
+
+		BREAK;
+
+		break;
+	}
+	}
 };
 
 //Menu Constructor
@@ -75,8 +97,11 @@ int Menu::ShowMenu() {
 	BREAK;
 
 	std::cout << "1 - Play Random Note Streak" << "\n";
+
 	std::cout << "2 - Select Note Streak" << "\n";
+
 	std::cout << "3 - Create Note Streak" << "\n";
+
 	std::cout << "99 - End Program" << "\n";
 
 	BREAK;
@@ -89,13 +114,13 @@ int Menu::ShowMenu() {
 
 FileMenu::FileMenu(void) {};
 
-int FileMenu::ShowMenu() {
-	std::cout << "Input a value to open a file." << "\n";
+std::string FileMenu::ShowMenu() {
+	std::cout << "Type in a command, follow by a folder based on its index." << "\n";
 
 	BREAK;
 
 	//Menu Functionality
-	int inputVal;
+	std::string inputVal;
 	std::cin >> inputVal;
 
 	return inputVal;

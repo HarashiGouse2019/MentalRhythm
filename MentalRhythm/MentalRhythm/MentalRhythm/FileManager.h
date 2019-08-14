@@ -22,6 +22,7 @@ class FileManager {
 public:
 	int Read(); //Read from a file
 	void Write(string filename, string content); //Write to a file
+	void Trash(string filename); //Delete a file
 
 	static string Execute(string filename); //Execute a file
 
