@@ -73,7 +73,9 @@ std::string NoteStreakFileCreation::Record() {
 	int keyVal = NULL; //We'll use this to stablize our Key Functions
 	do {
 		int c = 0; //Initialize c to toggle from 0 to 1 when we send input
+
 		while (1) {
+			#pragma region INPUT
 			try {
 				switch ((c = _getch())) {
 				case KEY_UP:
@@ -119,8 +121,11 @@ std::string NoteStreakFileCreation::Record() {
 				std::cerr << "System Defined Exception: \"" << e.what() << "\"";
 			}
 			break;
+#pragma endregion
 		}
+
 	} while (isRecording);
+
 	return noteStreak;
 }
 

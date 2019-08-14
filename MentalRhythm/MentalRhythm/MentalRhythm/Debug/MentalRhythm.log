@@ -1,4 +1,5 @@
 ﻿  main.cpp
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\main.cpp(108): warning C4018: '<': signed/unsigned mismatch
-c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\main.cpp(141): warning C4018: '<': signed/unsigned mismatch
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\main.cpp(112): warning C4018: '<': signed/unsigned mismatch
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\main.cpp(146): warning C4018: '<': signed/unsigned mismatch
+c:\users\tokusunei\desktop\mentalrhythm\mentalrhythm\mentalrhythm\mentalrhythm\main.cpp(175): warning C4018: '<': signed/unsigned mismatch
   MentalRhythm.vcxproj -> C:\Users\Tokusunei\Desktop\MentalRhythm\MentalRhythm\MentalRhythm\Debug\MentalRhythm.exe

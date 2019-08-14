@@ -53,7 +53,7 @@ void HelpPrint::FileManagerHelp(int index) {
 	case 0:
 	{
 		std::cout << "Welcome to the NoteStreak File Creation!!!" << "\n";
-		std::cout << "You are able to create your own .mrb file using this menu.";
+		std::cout << "You are able to create your own .mrb file using this menu.\n";
 
 		BREAK;
 

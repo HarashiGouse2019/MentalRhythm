@@ -44,6 +44,8 @@ int FileManager::Read() {
 
 	boost::filesystem::directory_iterator end_itr;
 
+	BREAK;
+
 	//cycle through the directory
 	for (boost::filesystem::directory_iterator itr(p); itr != end_itr; ++itr) {
 		if (boost::filesystem::is_regular_file(itr->path()) && boost::filesystem::extension(itr->path()) == ".mrb") {
@@ -55,11 +57,13 @@ int FileManager::Read() {
 		}
 	}
 
+	BREAK;
+
 	std::cout << "\nDONE!\n\n";
 
 	//If the program could not find any .mrb files
 	if (index < 1) {
-		con.DisplayText("There were no .mrb files. \nYou should create your own .mrb\n either manually or via Main Menu (option 3)\n");
+		con.DisplayText("There were no .mrb files. \nYou should create your own .mrb\neither manually or via Main Menu (option 3)\n", false);
 		system("pause"); system("CLS");
 		return NULL;
 	}
@@ -93,6 +97,20 @@ void FileManager::Trash(string filename) {
 	std::cout << "\nDONE!!!\n";
 }
 
+void FileManager::Rename(string filename) {
+	string name;
+
+	std::cout << "\nRename this file as: ";
+
+	std::getline(std::cin, name);
+
+	//Rename our file
+	std::cout << "Overriding...\n";
+	boost::filesystem::rename(filename, name + ".mrb");
+	std::cout << "\n\nDONE!!!\n";
+	
+}
+
 
 std::string FileManager::Execute(string filename) {
 	std::string content;
@@ -109,7 +127,6 @@ std::string FileManager::Execute(string filename) {
 	//We'll get getting a string for this, and we want to return
 	//it for the simulation
 	if (exec) {
-		std::cout << "\nReading... \n";
 		for (content; getline(exec, line);) {
 			content += line;
 		}
@@ -121,7 +138,7 @@ std::string FileManager::Execute(string filename) {
 	//And now that we got the information we need, we close the file.
 	exec.close();
 
-	std::cout << "\nDONE!\n" << std::endl;
+	std::cout << "\nDONE!!!\n" << std::endl;
 
 	return content;
 }
